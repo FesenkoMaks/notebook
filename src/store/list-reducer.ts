@@ -5,13 +5,13 @@ let listState = [
     {
         id: '111',
         fullName: 'Maks Fesenko',
-        number: '+375295307468',
-        email: 'maks.fesenko.1995@gmail.com',
+        number: '+375294445566',
+        email: 'maksrass1995@gmail.com',
     },
     {
         id: '222',
         fullName: 'Leo Messi ',
-        number: '+375295307468',
+        number: '+375295446677',
         email: 'leo.messi1995@gmail.com',
     }
 ]
@@ -36,7 +36,7 @@ export const listReducer = (state: listStateType = listState, action: ActionType
         case 'REMOVE-ITEM' :
             return state.filter(item => item.id !== action.id)
         case 'ADD-ITEM' :
-            return [{id: v1(), ...action.newItem}, ...state]
+            return [{id: v1(), fullName: action.newItem.fullName ,number: `+375${action.newItem.number}`, email: action.newItem.email}, ...state]
         case 'EDIT_ITEM' :
             return state.map(item => item.id === action.id ? action.model : item)
         default: return state

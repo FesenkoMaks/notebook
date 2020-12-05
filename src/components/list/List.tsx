@@ -18,7 +18,10 @@ export const List = () => {
     return (
         <div className={'list'}>
             <button className={'addButton'} onClick={() => setActive(true)}>+</button>
-            {arr.map((a: itemType) => <div className={'listItem'} key={v1()}>
+            {arr.sort((prev, next) => {
+                if ( prev.fullName < next.fullName ) return -1;
+                else return 1;
+            }).map((a: itemType) => <div className={'listItem'} key={v1()}>
                 <div className={'listItems'}>{Icons.user()} <span>{a.fullName}</span> </div>
                 <div className={'listItems'}>{Icons.phone()}<span>{a.number} </span></div>
                 <div className={'listItems'}>{Icons.email()} <span>{a.email}</span> </div>

@@ -17,7 +17,8 @@ export const validationSchema = () => Yup.object({
         .required('Required '),
     number: Yup.string()
         .required('Required ')
-        .min(12, 'Must be 12 characters or less '),
+        .min(9, '9 digits in format 295552211')
+        .max(9,'9 digits in format 295552211'),
     email: Yup.string()
         .email('Invalid email address ')
         .required('Required '),
@@ -67,7 +68,7 @@ const ModalAddContact = ({active, setActive}: propsModalType) => {
                                 <input
                                     id="number"
                                     name="number"
-                                    type="text"
+                                    type="number"
                                     onChange={formik.handleChange}
                                     value={formik.values.number}
                                 />

@@ -1,4 +1,8 @@
-
+.list {
+    background-color: #d98200;
+    height: 100%;
+    padding-bottom: 20px;
+}
 
 .listItem {
     margin: 10px auto;
@@ -10,6 +14,7 @@
     text-align: left;
     border: 1px solid white;
     position: relative;
+
 }
 
 .listItem:hover {

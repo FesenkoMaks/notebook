@@ -4,7 +4,7 @@ import {useFormik} from "formik";
 import {editItemAC, removeItemAC} from "../../store/list-reducer";
 import {useDispatch} from "react-redux";
 import Icons from "../Icons/Icons";
-import {validationSchema} from "./ModaAddContactl";
+import * as Yup from "yup";
 
 type propsModalType = {
     fullName: string,
@@ -12,6 +12,18 @@ type propsModalType = {
     email: string,
     id: string
 }
+
+export const validationSchema = () => Yup.object({
+    fullName: Yup.string()
+        .required('Required '),
+    number: Yup.string()
+        .required('Required ')
+        .min(13, '13 digits in format +375295552211')
+        .max(13,'13 digits in format +375295552211'),
+    email: Yup.string()
+        .email('Invalid email address ')
+        .required('Required '),
+})
 
 const ModalSettingContact = ({fullName, number, email, id}: propsModalType) => {
 
