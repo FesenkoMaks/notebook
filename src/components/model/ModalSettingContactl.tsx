@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import "./ModalSettingContact.css"
 import {useFormik} from "formik";
-import {addItemAC, editItemAC, removeItemAC} from "../../store/list-reducer";
+import {editItemAC, removeItemAC} from "../../store/list-reducer";
 import {useDispatch} from "react-redux";
+import Icons from "../Icons/Icons";
+import {validationSchema} from "./ModaAddContactl";
 
 type propsModalType = {
     fullName: string,
@@ -19,49 +21,73 @@ const ModalSettingContact = ({fullName, number, email, id}: propsModalType) => {
 
     const formik = useFormik({
         initialValues: {
-            fullName,
-            number,
-            email,
-            id
+            fullName: fullName,
+            number: number,
+            email: email
         },
+        validationSchema,
         onSubmit: model => {
-            dispatch(editItemAC(model))
+            dispatch(editItemAC(model, id))
             setActive(false)
         },
     });
     return (
         <>
-
-            <button onClick={() => setActive(true)}>setting</button>
-            <button onClick={() => dispatch(removeItemAC(id))}>delete</button>
+            <div className={'iconEdit'} onClick={() => setActive(true)}>{Icons.edit()}</div>
+            <div className={'iconTrash'} onClick={() => dispatch(removeItemAC(id))}>{Icons.trash()}</div>
             <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
                 <div className={active ? 'modal__content active' : 'modal__content'} onClick={e => e.stopPropagation()}>
-                    <form onSubmit={formik.handleSubmit}>
-                        <label htmlFor="fullName">Full Name</label>
-                        <input
-                            id="fullName"
-                            name="fullName"
-                            type="text"
-                            onChange={formik.handleChange}
-                            value={formik.values.fullName}
-                        />
-                        <label htmlFor="number">Number</label>
-                        <input
-                            id="number"
-                            name="number"
-                            type="text"
-                            onChange={formik.handleChange}
-                            value={formik.values.number}
-                        />
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            onChange={formik.handleChange}
-                            value={formik.values.email}
-                        />
-                        <button type="submit">Ok</button>
+                    <h2>Edit</h2>
+                    <form onSubmit={formik.handleSubmit} className={'form'}>
+                        <div className={'formItem'}>
+                            <div className={'formItem_name'}>Full Name</div>
+                            <div className={'formItem_input'}>
+                                <input
+                                    id="fullName"
+                                    name="fullName"
+                                    type="text"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.fullName}
+                                />
+                                {formik.errors.fullName ? <div className={'error'}>
+                                    {formik.errors.fullName}
+                                    {Icons.error()}
+                                </div> : null}
+                            </div>
+                        </div>
+                        <div className={'formItem'}>
+                            <div className={'formItem_name'}>Number</div>
+                            <div className={'formItem_input'}>
+                                <input
+                                    id="number"
+                                    name="number"
+                                    type="text"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.number}
+                                />
+                                {formik.errors.number ? <div className={'error'}>
+                                    {formik.errors.number}
+                                    {Icons.error()}
+                                </div> : null}
+                            </div>
+                        </div>
+                        <div className={'formItem'}>
+                            <div className={'formItem_name'}>Email</div>
+                            <div className={'formItem_input'}>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.email}
+                                />
+                                {formik.errors.email ? <div className={'error'}>
+                                    {formik.errors.email}
+                                    {Icons.error()}
+                                </div> : null}
+                            </div>
+                        </div>
+                        <button type="submit">{Icons.check()}</button>
                     </form>
                 </div>
             </div>

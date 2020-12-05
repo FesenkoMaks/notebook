@@ -11,6 +11,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.5s;
+    z-index: 33;
 }
 
 .modal.active {
@@ -22,11 +23,39 @@
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    width: 50vw;
+    width: 30vw;
     transform: scale(0.5);
     transition: 0.5s;
 }
 
 .modal__content.active {
     transform: scale(1);
+}
+
+.iconEdit{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 30px;
+    color: darkgrey;
+    transition: .5s;
+}
+
+.iconEdit:hover{
+    transform: scale(1.2);
+    color: #d98200;
+}
+
+.iconTrash {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    width: 30px;
+    color: darkgrey;
+    transition: .5s;
+}
+
+.iconTrash:hover {
+    color: red;
+    transform: scale(1.2);
 }

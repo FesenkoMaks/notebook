@@ -2,11 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {List} from "./components/list/List";
+import Icons from "./components/Icons/Icons";
 
 function App() {
   return (
     <div className="App">
-      <h1>Notebook</h1>
+      <h1>{Icons.book()}<span>Notebook</span></h1>
       <div>
         <List/>
       </div>

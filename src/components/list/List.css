@@ -1,0 +1,28 @@
+
+
+.listItem {
+    margin: 10px auto;
+    background-color: white;
+    width: 300px;
+    border-radius: 5px;
+    padding: 10px;
+    transition: .3s;
+    text-align: left;
+    border: 1px solid white;
+    position: relative;
+}
+
+.listItem:hover {
+    border: 1px solid darkgrey;
+}
+
+.listItem .listItems {
+    margin-bottom: 5px;
+}
+.listItem .listItems:last-child {
+    margin-bottom: 0;
+}
+.listItem .listItems span {
+    padding-left: 10px;
+}
+

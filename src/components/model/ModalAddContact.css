@@ -11,6 +11,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.5s;
+    z-index: 33;
 }
 
 .modal.active {
@@ -22,11 +23,79 @@
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    width: 50vw;
+    width: 500px;
     transform: scale(0.5);
     transition: 0.5s;
 }
 
+.modal__content h2 {
+    text-align: center;
+    color: #d98200;
+    padding: 0;
+    margin: 0;
+}
+
 .modal__content.active {
     transform: scale(1);
+}
+
+.form {
+    text-align: center;
+}
+
+.form button{
+    margin-top: 10px;
+    background-color: white;
+    font-size: 50px;
+    color: #4d4d4d;
+    border: none;
+    border-radius: 30px;
+    transition: .3s;
+    outline: none;
+}
+.form button:hover{
+    color: #d98200;
+    background-color: white;
+    transform: rotate(20deg);
+}
+
+.formItem {
+    display: flex;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.formItem .formItem_name {
+    font-weight: bold;
+    margin-left: 30px;
+    width: 30%;
+}
+
+.formItem .formItem_input {
+    width: 70%;
+    position: relative;
+}
+
+.formItem .formItem_input .error{
+    font-size: 14px;
+    position: absolute;
+    color: red;
+    right: 25px;
+    top: 35px;
+}
+
+
+
+.formItem .formItem_input input{
+    color: #d98200;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    width: 70%;
+    height: 30px;
+    padding: 0 10px;
+}
+.formItem .formItem_input input:focus{
+    background-color: #e8e8e8;
+    color: #d98200;
+    font-weight: bold;
 }
